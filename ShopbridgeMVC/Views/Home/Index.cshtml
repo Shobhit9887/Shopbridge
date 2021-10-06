@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ShopbridgeMVC.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Home";
     Guid prodId = Guid.Empty;
 }
 
@@ -54,7 +54,6 @@
             </td>
             <td>
                 <a asp-area="" asp-controller="Home" asp-action="AddorEdit" asp-route-id="@item.ProductId" class="btn btn-outline-primary"> Edit </a>
-
                 <a href="" data-toggle="modal" onclick="@(prodId = item.ProductId)" data-target="#confirmation" class="btn btn-outline-danger"> Delete </a>
             </td>
         </tr>
