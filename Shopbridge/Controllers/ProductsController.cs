@@ -5,6 +5,7 @@ using Shopbridge.ProductData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Shopbridge.Controllers
@@ -45,9 +46,15 @@ namespace Shopbridge.Controllers
         [Route("api/[controller]")]
         public IActionResult AddProduct(Product product)
         {
-            _productData.AddProduct(product);
-
-            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + product.ProductId, product);
+            var existingProduct = _productData.GetProducts().Where(x => x.ProductNumber == product.ProductNumber).SingleOrDefault();
+            if (existingProduct == null)
+            {
+                _productData.AddProduct(product);
+                return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + product.ProductId, product);
+            } else
+            {
+                return StatusCode(405);
+            }
         }
 
         [HttpDelete]
@@ -74,11 +81,19 @@ namespace Shopbridge.Controllers
 
             if(existingProduct != null)
             {
-                product.ProductId = existingProduct.ProductId;
-                _productData.EditProduct(product);
-            } 
-
-            return Ok(product.Name + " edited Successfully");
+                var duplicateProductNumber = _productData.GetProducts().Where(x => x.ProductNumber == product.ProductNumber && x.ProductId != product.ProductId).SingleOrDefault();
+                if (duplicateProductNumber == null) {
+                    product.ProductId = existingProduct.ProductId;
+                    _productData.EditProduct(product);
+                    return Ok(product.Name + " edited Successfully"); 
+                } else
+                {
+                    return StatusCode(405, "This Product Number already exists");
+                }
+            } else
+            {
+                return NotFound($"Product with Id: {id} was not found!");
+            }
         }
     }
 }

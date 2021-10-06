@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,17 @@ namespace ShopbridgeMVC.Controllers
                 if (ModelState.IsValid)
                 {
                     HttpResponseMessage response = GlobalVariables.shopBridgeClient.PostAsJsonAsync("products", product).Result;
-                    TempData["SuccessMessage"] = response.Content.ReadAsAsync<Product>().Result.Name + " was added successfully";
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TempData["SuccessMessage"] = response.Content.ReadAsAsync<Product>().Result.Name + " was added successfully";
+                    } else
+                    {
+                        if(response.StatusCode == (HttpStatusCode)405)
+                        {
+                            TempData["ErrorMessage"] = "This Product Number already exists";
+                        }
+                        return View(product);
+                    }
                 } else
                 {
                     return View(product);

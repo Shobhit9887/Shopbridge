@@ -36,28 +36,28 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr class="text-center">
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    <a asp-area="" asp-controller="Home" asp-action="AddorEdit" asp-route-id="@item.ProductId" class="btn btn-outline-primary"> Edit </a>
-                    
-                    <a href="" data-toggle="modal" onclick="@(prodId = item.ProductId)" data-target="#confirmation" class="btn btn-outline-danger"> Delete </a>
-                </td>
-            </tr>
+        <tr class="text-center">
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <a asp-area="" asp-controller="Home" asp-action="AddorEdit" asp-route-id="@item.ProductId" class="btn btn-outline-primary"> Edit </a>
+
+                <a href="" data-toggle="modal" onclick="@(prodId = item.ProductId)" data-target="#confirmation" class="btn btn-outline-danger"> Delete </a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -55,3 +55,23 @@ else
     }
 
 </div>
+
+<div id="alertDiv" class="align-middle alert alert-danger" style="display: none">
+    <p id="alertMessage" class="text-center"></p>
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["ErrorMessage"]';
+            successMessage = successMessage.replace(/&quot;/g, "");
+            console.log(successMessage);
+            if (successMessage != '') {
+                document.getElementById("alertMessage").innerHTML = successMessage;
+                $("#alertDiv").fadeIn().delay(3000).fadeOut(function (n) {
+                    $(this).hide(); n();
+                });
+            }
+        });     
+    </script>
+}

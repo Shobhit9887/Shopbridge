@@ -12,7 +12,7 @@ namespace Shopbridge.ProductData
 
         Product AddProduct(Product product);
 
-        void DeleteProduct(Product product);
+        Guid DeleteProduct(Product product);
 
         Product EditProduct(Product product);
 
