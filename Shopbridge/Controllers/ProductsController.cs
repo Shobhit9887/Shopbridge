@@ -53,7 +53,7 @@ namespace Shopbridge.Controllers
                 return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + product.ProductId, product);
             } else
             {
-                return StatusCode(405);
+                return StatusCode(405, "This Product Number already exists");
             }
         }
 

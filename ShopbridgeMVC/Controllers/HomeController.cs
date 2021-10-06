@@ -27,6 +27,7 @@ namespace ShopbridgeMVC.Controllers
             IEnumerable<Product> productList;
             HttpResponseMessage response = GlobalVariables.shopBridgeClient.GetAsync("products").Result;
             productList = response.Content.ReadAsAsync<IEnumerable<Product>>().Result;
+            productList = productList.OrderByDescending(x => x.ProductNumber);
             return View(productList);
         }
         
