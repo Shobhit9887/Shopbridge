@@ -1,6 +1,6 @@
  
-5th October, 2021
-Author: Shobhit Saxena
+5th October, 2021\
+Author: Shobhit Saxena\
 Shobhit.saxena54@gmail.com
 
 
@@ -23,30 +23,11 @@ The application includes Exception Handling for most of the unforeseen exception
 
 
 Table of Contents
-1	Technologies Used
-2	Backend	
-3	Database Management System	
-4	MVC 5	
+1	Technologies Used\
+2	Backend	\
+3	Database Management System	\
+4	MVC 5	\
 5	Unit Testing	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -62,10 +43,10 @@ e.	Unit test engine: NUnit
 
 It is developed in ASP.NET Core using entity framework. I chose ASP.NET Core because I have most of the professional experience in this technology and I find it really developer friendly as well as scalable for the future references.
 The project includes the following 5 API calls asynchronously:
-a.	To get all the products.
-b.	To get one product by id.
-c.	Add a new product.
-d.	Edit an existing product.
+a.	To get all the products.\
+b.	To get one product by id.\
+c.	Add a new product.\
+d.	Edit an existing product.\
 e.	Delete a product from the inventory.
 
 All these calls are equipped with exception handing and appropriate status codes. Database models are mapped with Entity Framework for direct access to .NET Objects. 
@@ -77,12 +58,12 @@ Database used is MSSQL, I chose MSSQL because I hadn’t worked on it in the pas
 There is only 1 table which has been converted to migration script as well for a seamless database creation.
 The table includes these fields of the given type:
 
-ProductId			GUID
-ProductNumber			int
-Name				varchar
-Description			varchar
-Price				float
-Quantity			float
+ProductId			GUID\
+ProductNumber			int\
+Name				varchar\
+Description			varchar\
+Price				float\
+Quantity			float\
 4	MVC 5
 
 Although in the assignment, the frontend was not asked, but being a Full Stack Developer I saw an opportunity to make the project along with learning a new thing for my skill set.
@@ -91,8 +72,15 @@ I chose MVC because it has a seamless connection mechanism to a .NET application
 There are these 2 views in our MVC module:
 a.	Index – This is the view where the user gets landed. It includes a very simple UI with a list of all the products that exist in the inventory.
  
+ ![image](https://user-images.githubusercontent.com/44239978/136166354-8f2c6f00-159b-440a-b859-790fabbe3be8.png)
+
+ 
 b.	Add/Edit view – User can add or edit a product in the inventory using this view. It contains a form that takes all the required fields with all the validations on the fields.
  
+ ![image](https://user-images.githubusercontent.com/44239978/136166439-2ec9ec64-1996-4544-9853-628ebaca7239.png)
+
+![image](https://user-images.githubusercontent.com/44239978/136166468-c8198e51-453e-43f9-b95d-e071321a7d41.png)
+
  
 
 5	Unit Testing
@@ -104,6 +92,8 @@ b.	A function can return on multiple points, so the unit tests are to be made fo
 
 The result:
  
+ ![image](https://user-images.githubusercontent.com/44239978/136166498-ee93681a-e56c-4843-8768-3aa7e55e3ead.png)
+
 
 
 6	Conclusion
